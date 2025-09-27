@@ -1,9 +1,9 @@
 # Dockerfile
 
-FROM python:3.11-slim
+FROM python:3.11
 
 # Install system dependencies for Qt
-RUN apt-get update && apt-get install -y \
+RUN sudo apt-get update && sudo apt-get install -y \
     libgl1-mesa-glx \
     libxkbcommon-x11-0 \
     libxcb-xinerama0 \

@@ -12,7 +12,7 @@ docker run --rm \
   -v /tmp/.X11-unix:/tmp/.X11-unix:ro \
   ghcr.io/chebilyoussef21/smart-home-assistant:latest
 
-## --> install.sh + docker-compose is how you deploy/run the app on target machines, while .github/workflows/build.yaml (GitHub Actions) is how you build, test, version, and publish the app image automatically whenever you push code. They solve different stages of the lifecycle.
+## --> install.sh + docker-compose is how you deploy/run the app on target machines, while .github/workflows/build-and-push.yml (GitHub Actions) is how you build, test, version, and publish the app image automatically whenever you push code. They solve different stages of the lifecycle.
 
 ## System FLOW:
 You push code → GitHub Actions builds & pushes a new container image.
