@@ -3,14 +3,14 @@
 # 1) Installation:
 
 ## Quick install (Linux)
-bash curl -fsSL https://raw.githubusercontent.com/OWNER/REPO/main/install.sh | sudo bash
+bash curl -fsSL https://raw.githubusercontent.com/chebilyoussef21/smart-home-assistant/main/install.sh | sudo bash
 
 ## Manual Run (Linux Desktop)
 xhost +local:docker
 docker run --rm \
   -e DISPLAY=$DISPLAY \
   -v /tmp/.X11-unix:/tmp/.X11-unix:ro \
-  ghcr.io/OWNER/REPO:latest
+  ghcr.io/chebilyoussef21/smart-home-assistant:latest
 
 ## --> install.sh + docker-compose is how you deploy/run the app on target machines, while .github/workflows/build.yaml (GitHub Actions) is how you build, test, version, and publish the app image automatically whenever you push code. They solve different stages of the lifecycle.
 
@@ -22,10 +22,10 @@ User data persists in the volume; only the container code changes.
 
 #IDK
 # build locally
-docker buildx build --platform linux/amd64,linux/arm64 -t ghcr.io/OWNER/REPO:latest --push .
+docker buildx build --platform linux/amd64,linux/arm64 -t ghcr.io/chebilyoussef21/smart-home-assistant:latest --push .
 # run locally
 xhost +local:docker
-docker run --rm -e DISPLAY=$DISPLAY -v /tmp/.X11-unix:/tmp/.X11-unix:ro ghcr.io/OWNER/REPO:latest
+docker run --rm -e DISPLAY=$DISPLAY -v /tmp/.X11-unix:/tmp/.X11-unix:ro ghcr.io/chebilyoussef21/smart-home-assistant:latest
 
 
 # 2) App Overview:

@@ -4,7 +4,7 @@
 # - sets up /opt/customHAapp on the target machine,
 # - drops a systemd unit so it starts at boot,
 # - uses the docker compose file you commit here.
-# Usage on a new machine: curl -fsSL https://raw.githubusercontent.com/OWNER/REPO/main/install.sh | sudo bash
+# Usage on a new machine: curl -fsSL https://raw.githubusercontent.com/chebilyoussef21/smart-home-assistant-gui/main/install.sh | sudo bash
 
 set -euo pipefail
 

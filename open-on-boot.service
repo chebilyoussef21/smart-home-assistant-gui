@@ -1,3 +1,5 @@
+#NOT NEEDED
+
 #Method 1: ALREADY INSIDE INSTALL.SH FILE
 #Method 2: Use this file and copy it to install.sh
 #COPY TO /etc/systemd/system/myapp.service in install.sh file

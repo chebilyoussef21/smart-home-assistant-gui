@@ -6,7 +6,7 @@
 
 services:
   customHAapp:
-    image: ghcr.io/OWNER/REPO:latest   # <-- replace OWNER/REPO
+    image: ghcr.io/chebilyoussef21/smart-home-assistant-gui:latest   
     container_name: customHAapp
     restart: unless-stopped
     environment:
