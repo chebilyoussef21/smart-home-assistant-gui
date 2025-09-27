@@ -18,13 +18,17 @@ RUN apt-get update && apt-get install -y \
     && rm -rf /var/lib/apt/lists/*
 
 # Set working directory
-WORKDIR /app
+WORKDIR /customHAapp
 
 # Copy project files
-COPY . /app
+COPY . /customHAapp
 
 # Install Python dependencies
 RUN pip install --no-cache-dir -r requirements.txt
+
+# QoL env for PyQt/Qt
+ENV QT_X11_NO_MITSHM=1
+ENV PYTHONUNBUFFERED=1
 
 # Run the GUI
 CMD ["python", "main.py"]

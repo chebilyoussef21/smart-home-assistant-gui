@@ -1,0 +1,40 @@
+# docker-compose.yml
+# What it does:
+# Runs your GUI container and maps the host X11 socket so windows appear on the host.
+# Runs Watchtower to auto-pull :latest and restart the app when you push a new image.
+#Linux desktop users must run once: xhost +local:docker   (will need X server on macOS/Windows)
+
+services:
+  customHAapp:
+    image: ghcr.io/OWNER/REPO:latest   # <-- replace OWNER/REPO
+    container_name: customHAapp
+    restart: unless-stopped
+    environment:
+      - DISPLAY=${DISPLAY}
+      - QT_X11_NO_MITSHM=1
+    volumes:
+      - /tmp/.X11-unix:/tmp/.X11-unix:ro  # X11 socket (Linux desktops)
+      - customHAapp_data:/data                  # your app's persistent data (if any)
+    # ports:                               # uncomment if your app exposes HTTP/etc
+    #   - "8080:8080"
+
+  watchtower:
+    image: containrrr/watchtower
+    restart: unless-stopped
+    command: --cleanup --interval 60 customHAapp
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+
+volumes:
+  customHAapp_data:
+
+
+#(nice to have) Healthcheck in Dockerfile (so compose can restart on failure):
+#replace with whatever 'alive' means for your app
+# HEALTHCHECK --interval=30s --timeout=5s --start-period=30s --retries=3 \
+# CMD python -c "import socket; s=socket.socket(); s.settimeout(3); s.connect(('127.0.0.1', 12345))" || exit 1
+
+# Telemetry/logging to a bind mount so users can send you logs:
+# volumes:
+#   - customHAapp_data:/data
+#   - ~/customHAapp-logs:/app/logs

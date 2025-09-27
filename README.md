@@ -1,5 +1,35 @@
 # Home Assistant GUI
 
+# 1) Installation:
+
+## Quick install (Linux)
+bash curl -fsSL https://raw.githubusercontent.com/OWNER/REPO/main/install.sh | sudo bash
+
+## Manual Run (Linux Desktop)
+xhost +local:docker
+docker run --rm \
+  -e DISPLAY=$DISPLAY \
+  -v /tmp/.X11-unix:/tmp/.X11-unix:ro \
+  ghcr.io/OWNER/REPO:latest
+
+## --> install.sh + docker-compose is how you deploy/run the app on target machines, while .github/workflows/build.yaml (GitHub Actions) is how you build, test, version, and publish the app image automatically whenever you push code. They solve different stages of the lifecycle.
+
+## System FLOW:
+You push code → GitHub Actions builds & pushes a new container image.
+Target machines are already running your compose stack + Watchtower.
+Watchtower detects the new image tag and restarts the app with the update.
+User data persists in the volume; only the container code changes.
+
+#IDK
+# build locally
+docker buildx build --platform linux/amd64,linux/arm64 -t ghcr.io/OWNER/REPO:latest --push .
+# run locally
+xhost +local:docker
+docker run --rm -e DISPLAY=$DISPLAY -v /tmp/.X11-unix:/tmp/.X11-unix:ro ghcr.io/OWNER/REPO:latest
+
+
+# 2) App Overview:
+
 A modern, intuitive Qt-based Python GUI for controlling your Home Assistant setup. Designed specifically for Raspberry Pi clients and non-technical users who want to interact with their smart home without dealing with the complexity of Home Assistant's web interface.
 
 ## Features
