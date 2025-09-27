@@ -30,7 +30,8 @@ mkdir -p "$APP_DIR"
 cd "$APP_DIR"
 
 # Fetch docker-compose.yml from your main branch
-curl -fsSL https://raw.githubusercontent.com/OWNER/REPO/main/docker-compose.yml -o docker-compose.yml
+# curl -fsSL docker-compose.yml -o docker-compose.yml
+#-> NO NEED CAUSE WE ALREADY HAVE IT IN THE REPO 
 
 # 4) Allow X11 (Linux desktops only; safe to try)
 if command -v xhost >/dev/null 2>&1; then

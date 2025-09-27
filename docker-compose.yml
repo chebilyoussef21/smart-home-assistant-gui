@@ -1,8 +1,8 @@
 # docker-compose.yml
 # What it does:
-# Runs your GUI container and maps the host X11 socket so windows appear on the host.
-# Runs Watchtower to auto-pull :latest and restart the app when you push a new image.
-#Linux desktop users must run once: xhost +local:docker   (will need X server on macOS/Windows)
+#  - Runs your GUI container and maps the host X11 socket so windows appear on the host.
+#  - Runs Watchtower to auto-pull :latest (which we get from github action) and restart the app when you push a new image.
+# Linux desktop users must run once: xhost +local:docker   (will need X server on macOS/Windows)
 
 services:
   customHAapp:
