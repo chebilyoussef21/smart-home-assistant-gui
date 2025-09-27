@@ -1,4 +1,4 @@
-PyQt5>=6.5.0
+PyQt5>=5.15.0
 requests>=2.31.0
 websockets>=11.0.0
 asyncio-mqtt>=0.13.0

@@ -3,8 +3,8 @@
 FROM python:3.11
 
 # Install system dependencies for Qt
-RUN sudo apt-get update && sudo apt-get install -y \
-    libgl1-mesa-glx \
+RUN apt-get update && apt-get install -y \
+    #libgl1-mesa-glx \
     libxkbcommon-x11-0 \
     libxcb-xinerama0 \
     libxcb-randr0 \
@@ -15,6 +15,8 @@ RUN sudo apt-get update && sudo apt-get install -y \
     libsm6 \
     libxext6 \
     libx11-xcb1 \
+    qt5-qmake \
+    qtbase5-dev \
     && rm -rf /var/lib/apt/lists/*
 
 # Set working directory
@@ -24,6 +26,7 @@ WORKDIR /customHAapp
 COPY . /customHAapp
 
 # Install Python dependencies
+RUN pip install --upgrade pip
 RUN pip install --no-cache-dir -r requirements.txt
 
 # QoL env for PyQt/Qt
